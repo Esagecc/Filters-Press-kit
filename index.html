@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FILTERS - Horror Short Film Press Kit</title>
+  <style>
+    :root {
+      --bg-color: #0d0d0d;
+      --card-bg: #1a1a1a;
+      --text-color: #e0e0e0;
+      --purple: #b241ff;
+      --orange: #e85621;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding-top: 70px;
+    }
+
+    /* Navigation Bar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(13, 13, 13, 0.95);
+      border-bottom: 2px solid var(--purple);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    /* Hamburger Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background-color: var(--purple);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--purple);
+      letter-spacing: 4px;
+    }
+
+    .hero p {
+      color: var(--orange);
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .poster-container {
+      margin: 2rem auto;
+      max-width: 400px;
+    }
+
+    .poster-container img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid var(--purple);
+      box-shadow: 0 0 15px rgba(178, 65, 255, 0.3);
+    }
+
+    /* Main Content Sections */
+    section {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      scroll-margin-top: 90px;
+    }
+
+    h2 {
+      color: var(--orange);
+      border-bottom: 2px solid var(--purple);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--purple);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Talent Layout */
+    .talent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .talent-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #333;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .talent-card img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .talent-card h3 {
+      color: var(--purple);
+    }
+
+    .talent-card h4 {
+      color: var(--orange);
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Spec Grid */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .spec-item {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    .spec-item strong {
+      color: var(--purple);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #050505;
+      border-top: 1px solid #222;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+        border-bottom: 2px solid var(--purple);
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="logo">FILTERS</div>
+      <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-list">
+        <li><a href="#statement">STATEMENT</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#talent">TALENT</a></li>
+        <li><a href="#crew">CREW</a></li>
+        <li><a href="#project">PROJECT</a></li>
+        <li><a href="#awards">AWARDS</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>FILTERS</h1>
+    <p>"Filters, an app you do not want open"</p>
+    <div class="poster-container">
+      <img src="Images/FiltersPosterLQ.jpg" alt="Filters Movie Poster">
+    </div>
+  </div>
+
+  <section id="statement">
+    <h2>Director / Writer Statement</h2>
+    <div class="card">
+      <p>I am so fortunate to start my directing journey with a horror short. As a lifelong fan of the horror genre, I enjoy the adrenaline that a terrifying scene can bring. This film began with a simple idea: we enjoy and rely on our smart devices in so many ways. We have become accustomed to the convenience of carrying our smartphones everywhere we go. But what if the very thing we carry so casually could ultimately become our demise?</p>
+      <br>
+      <p>I wanted to bring fear into an everyday activity that so many people enjoy and hopefully leave the audience cringing at the dark possibilities behind something so ordinary. Not only was I excited to direct a horror film, but I was also honored to work with two incredibly talented Latina actresses. I believe that a diverse cast and crew bring unique perspectives, energy, and creativity to a production—elements that can make a film more meaningful.</p>
+      <br>
+      <p>I am especially grateful to have had an amazing producer, Robert Cantu—also known as my husband—by my side. His ability to bring together talented individuals with different skills and experiences made the production process much smoother and allowed us to bring this story to life.</p>
+      <br>
+      <p><strong>— Elizabeth Cantu</strong></p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About the Film</h2>
+    <div class="card">
+      <h3 style="color: var(--orange); margin-bottom: 0.5rem;">Logline</h3>
+      <p>Ofelia and Tina are co-workers alone at work who decide to take a break and start playing with face filter apps, unaware that the face filter app is cursed and deadly.</p>
+    </div>
+    <div class="card">
+      <h3 style="color: var(--orange); margin-bottom: 0.5rem;">Synopsis</h3>
+      <p>Two Latina students working a late shift in an empty campus building try to break the eerie silence with ghost stories and a harmless prank. The fun takes a dark turn when they open a horror-themed camera filter app, only for one of the girls to watch her friend transform into a demonic entity. What begins as a glitch turns into a possessed student who hunts her terrified classmate through the dark hallways, ending in a brutal, bloody execution.</p>
+    </div>
+  </section>
+
+  <section id="talent">
+    <h2>Talent</h2>
+    <div class="talent-grid">
+      <div class="talent-card">
+        <img src="Images/RylieRdz.jpg" alt="Rylie Rodriguez">
+        <h3>Rylie Rodriguez</h3>
+        <h4>as Ofelia</h4>
+        <p>Rylie is a Mexican-American actress born and raised in Texas. She began pursuing a screen acting career at 8 years old. Rylie Rodriguez is known for <em>Landman</em> (2024–2025) and <em>Dreamer Cinderella</em> (2026).</p>
+      </div>
+      <div class="talent-card">
+        <img src="Images/RockyFaye.jpg" alt="Rocky Faye">
+        <h3>Rocky Faye</h3>
+        <h4>as Tina</h4>
+        <p>Rocky is a Texas-based Latina voice actress. Rocky is known for <em>Faithful Sword</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="crew">
+    <h2>Full Crew</h2>
+    <div class="card">
+      <p><strong>Directed by:</strong> Elizabeth Cantu</p>
+      <p><strong>Written by:</strong> Elizabeth Cantu</p>
+      <p><strong>Produced by:</strong> Robert Cantu</p>
+      <p><strong>Executive Producer:</strong> Elizabeth Cantu</p>
+      <p><strong>Director of Photography:</strong> Rex Maya</p>
+      <p><strong>First Assistant Director:</strong> Karen Prior</p>
+      <p><strong>First Assistant Camera:</strong> Jonah Elabd</p>
+      <p><strong>Editor & Colorist:</strong> Rex Maya</p>
+      <p><strong>Boom Operator / Sound Recordist:</strong> Mario Garay</p>
+      <p><strong>Key Makeup Artist & SFX:</strong> Lainie Garcia</p>
+      <p><strong>Filters Special Effects:</strong> Javier Prato</p>
+      <p><strong>Script Supervisor:</strong> Terri Vasquez</p>
+      <p><strong>Production Assistants:</strong> Manuel Ytuarte, River Cantu, LaRayne Garza</p>
+    </div>
+  </section>
+
+  <section id="project">
+    <h2>Project Specifications</h2>
+    <div class="spec-grid">
+      <div class="spec-item"><strong>Genre</strong>Horror / Short</div>
+      <div class="spec-item"><strong>Running Time</strong>10 minutes</div>
+      <div class="spec-item"><strong>Country</strong>United States</div>
+      <div class="spec-item"><strong>Language</strong>English</div>
+      <div class="spec-item"><strong>Color</strong>Color</div>
+      <div class="spec-item"><strong>Camera</strong>Sony</div>
+      <div class="spec-item"><strong>Aspect Ratio</strong>2.39:1</div>
+      <div class="spec-item"><strong>Shooting Format</strong>4K Digital on Anamorphic Lens</div>
+      <div class="spec-item"><strong>Filming Locations</strong>Austin, Texas</div>
+      <div class="spec-item"><strong>Completion Date</strong>August 10, 2026</div>
+      <div class="spec-item"><strong>Production Co.</strong>Corpus Fusion Productions</div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <h2>Screenings & Awards</h2>
+    <div class="card">
+      <h3 style="color: var(--purple);">Indiana Independent Film Festival, USA</h3>
+      <p><strong>Result:</strong> Winner - Best Horror Short</p>
+      <p><strong>Date:</strong> September 2026</p>
+    </div>
+    <div class="card">
+      <h3 style="color: var(--purple);">Shutter Speed Film Festival, USA</h3>
+      <p><strong>Result:</strong> Official Selection</p>
+      <p><strong>Date:</strong> September 2026</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Corpus Fusion Productions. All Rights Reserved.</p>
+    <p>Email: <a href="mailto:corpusfusion@gmail.com">corpusfusion@gmail.com</a></p>
+    <p>
+      Instagram: <a href="https://www.instagram.com/filters_horror" target="_blank">@filters_horror</a> |
+      <a href="https://facebook.com/corpusfusion" target="_blank">Facebook</a>
+    </p>
+  </footer>
+
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu view on mobile icon click
+    mobileMenu.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Close menu when a navigation item is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
